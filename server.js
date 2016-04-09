@@ -37,7 +37,7 @@ app.post('/todos', function(req, res) {
 	body.id = todoNextId++;
 
 	todos.push(body);
-
+	res.send('All is well so far');
 	res.json(body);
 });
 

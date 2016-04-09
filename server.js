@@ -12,6 +12,15 @@ app.get('/', function(req,res) {
 	res.send('Todo API root');
 });
 
+app.post('/todos', function(req, res) {
+	var body = req.body;
+	body.id = todoNextId++;
+
+	todos.push(body);
+	console.log("All is well");
+	res.json(body);
+});
+
 app.get('/todos', function(req, res) {
 	res.json(todos);
 });
@@ -32,14 +41,7 @@ app.get('/todos/:id', function(req, res) {
 	// res.send('Asking for todo with id of ' + req.params.id);
 });
 
-app.post('/todos', function(req, res) {
-	var body = req.body;
-	body.id = todoNextId++;
 
-	todos.push(body);
-	console.log("All is well");
-	res.json(body);
-});
 
 app.listen(PORT, function(){
 	console.log('Express listening on port ' + PORT);
